@@ -1,0 +1,35 @@
+/*
+ Author: Jan McNulty
+ Date:10/20/22
+ */
+import java.util.LinkedList;
+import java.util.Scanner;
+public class Exercise22_1 {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		LinkedList<Character> max = new LinkedList<>();
+		LinkedList<Character> list = new LinkedList<>();
+
+		System.out.println("Enter in a String:");
+		String message = input.nextLine();
+
+		for (int i = 0; i < message.length(); i++) {
+			if (list.size() > 1 && message.charAt(i) <= list.getLast() && list.contains(message.charAt(i))) {
+				list.clear();
+			}
+			list.add(message.charAt(i));
+		}
+		if (list.size() > max.size()) {
+			max.clear();
+			max.addAll(list);
+		}
+		for (Character ch: max) {
+			System.out.print(ch);
+		}
+		
+		System.out.println("Maximum consecutive substring is " + max);
+
+	}
+
+}
